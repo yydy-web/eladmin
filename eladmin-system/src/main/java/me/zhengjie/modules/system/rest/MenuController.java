@@ -76,6 +76,14 @@ public class MenuController {
         return new ResponseEntity<>(menuService.getMenus(pid),HttpStatus.OK);
     }
 
+    @ApiOperation("获取角色全部菜单")
+    @GetMapping(value = "/role")
+    @PreAuthorize("@el.check('menu:list','roles:list')")
+    public ResponseEntity<List<MenuDto>> queryRole(@RequestParam Long roleId){
+        List<MenuDto> menuDtoList = menuService.findByRoleId(roleId);
+        return new ResponseEntity(menuService.buildTree(menuDtoList), HttpStatus.OK);
+    }
+
     @ApiOperation("根据菜单ID返回所有子节点ID，包含自身ID")
     @GetMapping(value = "/child")
     @PreAuthorize("@el.check('menu:list','roles:list')")

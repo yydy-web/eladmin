@@ -110,6 +110,12 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
+    public List<MenuDto> findByRoleId(Long roleId) {
+        LinkedHashSet<Menu> menus = menuRepository.findByRoleId(roleId);
+        return menus.stream().map(menuMapper::toDto).collect(Collectors.toList());
+    }
+
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public void create(Menu resources) {
         if(menuRepository.findByTitle(resources.getTitle()) != null){

@@ -123,4 +123,12 @@ public interface MenuService {
      * @return /
      */
     List<MenuDto> findByUser(Long currentUserId);
+
+
+    /**
+     * 根据当前角色获取菜单
+     * @param roleId /
+     * @return /
+     */
+    List<MenuDto> findByRoleId(Long roleId);
 }
