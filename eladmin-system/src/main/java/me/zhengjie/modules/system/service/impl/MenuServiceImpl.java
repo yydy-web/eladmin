@@ -110,8 +110,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public List<MenuDto> findByRoleId(Long roleId) {
-        LinkedHashSet<Menu> menus = menuRepository.findByRoleId(roleId);
+    public List<MenuDto> findSystemMenu() {
+        LinkedHashSet<Menu> menus = menuRepository.findAllMenu();
         return menus.stream().map(menuMapper::toDto).collect(Collectors.toList());
     }
 

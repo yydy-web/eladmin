@@ -79,8 +79,8 @@ public class MenuController {
     @ApiOperation("获取角色全部菜单")
     @GetMapping(value = "/role")
     @PreAuthorize("@el.check('menu:list','roles:list')")
-    public ResponseEntity<List<MenuDto>> queryRole(@RequestParam Long roleId){
-        List<MenuDto> menuDtoList = menuService.findByRoleId(roleId);
+    public ResponseEntity<List<MenuDto>> queryRole(){
+        List<MenuDto> menuDtoList = menuService.findSystemMenu();
         return new ResponseEntity(menuService.buildTree(menuDtoList), HttpStatus.OK);
     }
 

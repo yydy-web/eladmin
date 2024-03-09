@@ -127,8 +127,7 @@ public interface MenuService {
 
     /**
      * 根据当前角色获取菜单
-     * @param roleId /
      * @return /
      */
-    List<MenuDto> findByRoleId(Long roleId);
+    List<MenuDto> findSystemMenu();
 }
